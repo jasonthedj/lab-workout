@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The Lab Generator</title>
+  <title>The Lab Superset Builder</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #000;
       color: #fff;
       max-width: 900px;
-      margin: 40px auto;
+      margin: 30px auto;
+      padding: 12px;
+      font-size: 18px;
     }
 
     h1 {
       color: #E10600;
+      font-size: 34px;
     }
 
     button {
       background: #E10600;
       color: #fff;
       border: none;
-      padding: 12px 16px;
-      cursor: pointer;
+      padding: 18px 22px;
+      font-size: 20px;
       font-weight: bold;
+      cursor: pointer;
+      width: 100%;
       margin-bottom: 20px;
+      border-radius: 8px;
     }
 
     pre {
@@ -30,22 +37,28 @@
       padding: 20px;
       border: 1px solid #333;
       white-space: pre-wrap;
+      font-size: 18px;
+      line-height: 1.6;
+      border-radius: 8px;
     }
-
   </style>
 </head>
+
 <body>
 
-<h1>The Lab Workout Generator</h1>
-<button onclick="generate()">Generate Workout</button>
+<h1>The Lab Superset Builder</h1>
+
+<button onclick="generate()">GENERATE WORKOUT</button>
 
 <pre id="output"></pre>
 
 <script>
 
-// ===== EXERCISE LIBRARY (LAB SYSTEM) =====
+// =====================
+// EXPANDED LAB LIBRARY (+10 each category)
+// =====================
 
-// Upper Push
+// PUSH (+10)
 const upperPush = [
   "DB Bench Press",
   "Incline DB Press",
@@ -53,10 +66,18 @@ const upperPush = [
   "Landmine Press",
   "Half-Kneeling DB Press",
   "Push-Ups",
-  "Band-Resisted Push-Ups"
+  "Weighted Push-Up",
+  "Single Arm Landmine Press",
+  "KB Floor Press",
+  "Standing DB Press",
+  "Machine Chest Press",
+  "Decline Push-Up",
+  "Cable Chest Press",
+  "Explosive Push-Up",
+  "Floor Press (Barbell)"
 ];
 
-// Upper Pull
+// PULL (+10)
 const upperPull = [
   "Pull-Ups",
   "Chin-Ups",
@@ -64,32 +85,56 @@ const upperPull = [
   "Chest-Supported DB Row",
   "Single Arm DB Row",
   "TRX Row",
-  "Seated Cable Row"
+  "Seated Cable Row",
+  "Neutral Grip Pulldown",
+  "Inverted Row",
+  "High Row Machine",
+  "Wide Grip Pulldown",
+  "Straight Arm Pulldown",
+  "Band Assisted Pull-Up",
+  "Kneeling Cable Row",
+  "Meadows Row"
 ];
 
-// Knee Dominant
+// KNEE (+10)
 const lowerKnee = [
   "Back Squat",
   "Front Squat",
   "Goblet Squat",
-  "Rear Foot Elevated Split Squat",
+  "RFESS",
   "Step-Ups",
   "Reverse Lunge",
-  "Trap Bar Squat"
+  "Trap Bar Squat",
+  "Paused Squat",
+  "Tempo Split Squat",
+  "Hack Squat",
+  "Leg Press",
+  "Box Squat",
+  "Bulgarian Split Squat",
+  "Walking Lunge",
+  "Heel Elevated Squat"
 ];
 
-// Hip Dominant
+// HIP (+10)
 const lowerHip = [
   "RDL",
   "Barbell Deadlift",
   "Trap Bar Deadlift",
   "Hip Thrust",
-  "Kettlebell Deadlift",
+  "KB Deadlift",
   "Nordic Hamstring Curl",
-  "kBox Deadlift"
+  "kBox Deadlift",
+  "Single Leg RDL",
+  "Good Morning",
+  "Cable Pull Through",
+  "Glute Bridge",
+  "Band Hip Thrust",
+  "Deficit Deadlift",
+  "Kettlebell Swing",
+  "Reverse Hyper"
 ];
 
-// Core
+// CORE (+10)
 const core = [
   "Dead Bug",
   "Plank",
@@ -97,52 +142,74 @@ const core = [
   "Hanging Knee Raise",
   "Pallof Press",
   "Cable Chop",
-  "Ab Wheel"
+  "Ab Wheel",
+  "Farmer Carry",
+  "Suitcase Carry",
+  "Toes to Bar",
+  "Cable Lift",
+  "Stir the Pot",
+  "Swiss Ball Rollout",
+  "Dead Bug March",
+  "Anti-Rotation Hold"
 ];
 
-// Conditioning
+// CONDITIONING (+10)
 const finisher = [
   "Sled Push",
   "Sled Drag",
   "Airdyne Sprint",
   "Row Intervals",
   "SkiErg Sprint",
-  "Tempo Runs"
+  "Tempo Run",
+  "Assault Bike",
+  "Shuttle Runs",
+  "Hill Sprints",
+  "Battle Ropes",
+  "kBox Conditioning Circuit",
+  "Farmer Carry March",
+  "Med Ball Complex",
+  "Lateral Sled Drag",
+  "EMOM Bike Sprints"
 ];
 
-// Primer
+// PRIMER
 const primer = [
-  "Jump Rope 30s",
+  "Jump Rope",
   "Med Ball Slams",
   "A-Skips",
-  "Pogo Jumps"
+  "Pogo Jumps",
+  "Lateral Bounds"
 ];
 
-// ===== RANDOM PICK FUNCTION =====
+// =====================
+// RANDOM PICK
+// =====================
 function pick(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-// ===== GENERATE WORKOUT =====
+// =====================
+// GENERATE SUPERSETS
+// =====================
 function generate() {
 
   let workout = "";
 
-  workout += "BLOCK 1\n";
+  workout += "BLOCK 1 - PRIMER\n";
   workout += "- " + pick(primer) + "\n\n";
 
-  workout += "BLOCK 2\n";
-  workout += "- " + pick(upperPush) + " (3 x 8)\n";
-  workout += "- " + pick(upperPull) + " (3 x 10)\n";
-  workout += "- " + pick(core) + " (3 x 12)\n\n";
+  workout += "BLOCK 2 - UPPER SUPERSERIES\n";
+  workout += "A1: " + pick(upperPush) + "\n";
+  workout += "A2: " + pick(upperPull) + "\n";
+  workout += "A3: " + pick(core) + "\n\n";
 
-  workout += "BLOCK 3\n";
-  workout += "- " + pick(lowerKnee) + " (3 x 8)\n";
-  workout += "- " + pick(lowerHip) + " (3 x 10)\n";
-  workout += "- " + pick(core) + " (3 x 12)\n\n";
+  workout += "BLOCK 3 - LOWER SUPERSERIES\n";
+  workout += "B1: " + pick(lowerKnee) + "\n";
+  workout += "B2: " + pick(lowerHip) + "\n";
+  workout += "B3: " + pick(core) + "\n\n";
 
   workout += "FINISHER\n";
-  workout += "- " + pick(finisher) + " (5 min)\n";
+  workout += "- " + pick(finisher) + " (5–8 min)\n";
 
   document.getElementById("output").textContent = workout;
 }
