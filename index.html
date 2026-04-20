@@ -10,13 +10,14 @@
       color: #fff;
       max-width: 900px;
       margin: 30px auto;
-      padding: 12px;
+      padding: 14px;
       font-size: 18px;
     }
 
     h1 {
       color: #E10600;
-      font-size: 34px;
+      font-size: 36px;
+      margin-bottom: 10px;
     }
 
     button {
@@ -28,7 +29,7 @@
       font-weight: bold;
       cursor: pointer;
       width: 100%;
-      margin-bottom: 20px;
+      margin: 10px 0 20px 0;
       border-radius: 8px;
     }
 
@@ -54,164 +55,157 @@
 
 <script>
 
-// =====================
-// EXPANDED LAB LIBRARY (+10 each category)
-// =====================
+/* =========================
+   BLOCK 1 SYSTEM
+========================= */
 
-// PUSH (+10)
-const upperPush = [
-  "DB Bench Press",
-  "Incline DB Press",
-  "Barbell Bench Press",
-  "Landmine Press",
-  "Half-Kneeling DB Press",
-  "Push-Ups",
-  "Weighted Push-Up",
-  "Single Arm Landmine Press",
-  "KB Floor Press",
-  "Standing DB Press",
-  "Machine Chest Press",
-  "Decline Push-Up",
-  "Cable Chest Press",
-  "Explosive Push-Up",
-  "Floor Press (Barbell)"
-];
-
-// PULL (+10)
-const upperPull = [
-  "Pull-Ups",
-  "Chin-Ups",
-  "Lat Pulldown",
-  "Chest-Supported DB Row",
-  "Single Arm DB Row",
-  "TRX Row",
-  "Seated Cable Row",
-  "Neutral Grip Pulldown",
-  "Inverted Row",
-  "High Row Machine",
-  "Wide Grip Pulldown",
-  "Straight Arm Pulldown",
-  "Band Assisted Pull-Up",
-  "Kneeling Cable Row",
-  "Meadows Row"
-];
-
-// KNEE (+10)
-const lowerKnee = [
-  "Back Squat",
-  "Front Squat",
-  "Goblet Squat",
-  "RFESS",
-  "Step-Ups",
-  "Reverse Lunge",
-  "Trap Bar Squat",
-  "Paused Squat",
-  "Tempo Split Squat",
-  "Hack Squat",
-  "Leg Press",
-  "Box Squat",
-  "Bulgarian Split Squat",
-  "Walking Lunge",
-  "Heel Elevated Squat"
-];
-
-// HIP (+10)
-const lowerHip = [
-  "RDL",
-  "Barbell Deadlift",
-  "Trap Bar Deadlift",
-  "Hip Thrust",
-  "KB Deadlift",
-  "Nordic Hamstring Curl",
-  "kBox Deadlift",
-  "Single Leg RDL",
-  "Good Morning",
-  "Cable Pull Through",
-  "Glute Bridge",
-  "Band Hip Thrust",
-  "Deficit Deadlift",
-  "Kettlebell Swing",
-  "Reverse Hyper"
-];
-
-// CORE (+10)
-const core = [
-  "Dead Bug",
-  "Plank",
-  "Side Plank",
-  "Hanging Knee Raise",
-  "Pallof Press",
-  "Cable Chop",
-  "Ab Wheel",
-  "Farmer Carry",
-  "Suitcase Carry",
-  "Toes to Bar",
-  "Cable Lift",
-  "Stir the Pot",
-  "Swiss Ball Rollout",
-  "Dead Bug March",
-  "Anti-Rotation Hold"
-];
-
-// CONDITIONING (+10)
-const finisher = [
-  "Sled Push",
-  "Sled Drag",
-  "Airdyne Sprint",
-  "Row Intervals",
-  "SkiErg Sprint",
-  "Tempo Run",
-  "Assault Bike",
-  "Shuttle Runs",
-  "Hill Sprints",
-  "Battle Ropes",
-  "kBox Conditioning Circuit",
-  "Farmer Carry March",
-  "Med Ball Complex",
-  "Lateral Sled Drag",
-  "EMOM Bike Sprints"
-];
-
-// PRIMER
-const primer = [
+const hrElevator = [
   "Jump Rope",
-  "Med Ball Slams",
-  "A-Skips",
-  "Pogo Jumps",
-  "Lateral Bounds"
+  "Assault Bike 30s",
+  "Row 250m",
+  "SkiErg 30s",
+  "Shuttle Runs",
+  "Airdyne Sprint",
+  "Med Ball Slam Series",
+  "Lateral Shuffle",
+  "High Knees to Sprint"
 ];
 
-// =====================
-// RANDOM PICK
-// =====================
+const plyo = [
+  "Pogo Jumps",
+  "Lateral Pogos",
+  "Line Hops (F/B)",
+  "Line Hops (Lateral)",
+  "Split Squat Jumps (low amplitude)",
+  "Reactive Step-Off + Stick",
+  "Skater Bounds (controlled)",
+  "Ankling Series",
+  "Drop to Stick (low box)",
+  "Continuous Ankling to Sprint"
+];
+
+const mobility = [
+  "90/90 Hip Switches",
+  "World’s Greatest Stretch",
+  "Cossack Squat Flow",
+  "Ankle Rockers",
+  "Thoracic Rotations",
+  "Hip Flexor Rockbacks",
+  "Deep Squat Hold + Reach",
+  "Open Book Rotation"
+];
+
+/* =========================
+   LAB EXERCISE LIBRARY
+========================= */
+
+// Push
+const upperPush = [
+  "DB Bench Press","Incline DB Press","Barbell Bench Press","Landmine Press",
+  "Half-Kneeling DB Press","Push-Ups","Weighted Push-Up","Single Arm Landmine Press",
+  "KB Floor Press","Standing DB Press","Machine Chest Press","Cable Chest Press"
+];
+
+// Pull
+const upperPull = [
+  "Pull-Ups","Chin-Ups","Lat Pulldown","Chest-Supported DB Row",
+  "Single Arm DB Row","TRX Row","Seated Cable Row","Neutral Grip Pulldown",
+  "Inverted Row","High Row Machine","Straight Arm Pulldown","Meadows Row"
+];
+
+// Knee
+const lowerKnee = [
+  "Back Squat","Front Squat","Goblet Squat","RFESS",
+  "Step-Ups","Reverse Lunge","Trap Bar Squat","Paused Squat",
+  "Tempo Split Squat","Hack Squat","Leg Press","Bulgarian Split Squat"
+];
+
+// Hip
+const lowerHip = [
+  "RDL","Barbell Deadlift","Trap Bar Deadlift","Hip Thrust",
+  "KB Deadlift","Nordic Hamstring Curl","kBox Deadlift","Single Leg RDL",
+  "Good Morning","Cable Pull Through","Glute Bridge","Kettlebell Swing"
+];
+
+// Core
+const core = [
+  "Dead Bug","Plank","Side Plank","Hanging Knee Raise",
+  "Pallof Press","Cable Chop","Ab Wheel","Farmer Carry",
+  "Suitcase Carry","Toes to Bar","Anti-Rotation Hold","Swiss Ball Rollout"
+];
+
+// Conditioning
+const finisher = [
+  "Sled Push","Sled Drag","Airdyne Sprint","Row Intervals",
+  "SkiErg Sprint","Tempo Run","Assault Bike","Shuttle Runs",
+  "Hill Sprints","Battle Ropes","Lateral Sled Drag","EMOM Bike Sprints"
+];
+
+/* =========================
+   MEMORY (last 5 workouts)
+========================= */
+
+let history = JSON.parse(localStorage.getItem("history") || "[]");
+
 function pick(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
+  let choice;
+  let tries = 0;
+
+  do {
+    choice = arr[Math.floor(Math.random() * arr.length)];
+    tries++;
+  } while (history.includes(choice) && tries < 10);
+
+  return choice;
 }
 
-// =====================
-// GENERATE SUPERSETS
-// =====================
+/* =========================
+   GENERATOR
+========================= */
+
 function generate() {
 
   let workout = "";
+  let used = [];
 
+  function safePick(arr) {
+    const item = pick(arr);
+    used.push(item);
+    return item;
+  }
+
+  /* BLOCK 1 */
   workout += "BLOCK 1 - PRIMER\n";
-  workout += "- " + pick(primer) + "\n\n";
+  workout += "HR: " + safePick(hrElevator) + "\n";
+  workout += "Plyo: " + safePick(plyo) + "\n";
+  workout += "Mobility: " + safePick(mobility) + "\n\n";
 
+  /* BLOCK 2 */
   workout += "BLOCK 2 - UPPER SUPERSERIES\n";
-  workout += "A1: " + pick(upperPush) + "\n";
-  workout += "A2: " + pick(upperPull) + "\n";
-  workout += "A3: " + pick(core) + "\n\n";
+  workout += "A1: " + safePick(upperPush) + "\n";
+  workout += "A2: " + safePick(upperPull) + "\n";
+  workout += "A3: " + safePick(core) + "\n\n";
 
+  /* BLOCK 3 */
   workout += "BLOCK 3 - LOWER SUPERSERIES\n";
-  workout += "B1: " + pick(lowerKnee) + "\n";
-  workout += "B2: " + pick(lowerHip) + "\n";
-  workout += "B3: " + pick(core) + "\n\n";
+  workout += "B1: " + safePick(lowerKnee) + "\n";
+  workout += "B2: " + safePick(lowerHip) + "\n";
+  workout += "B3: " + safePick(core) + "\n\n";
 
+  /* FINISHER */
   workout += "FINISHER\n";
-  workout += "- " + pick(finisher) + " (5–8 min)\n";
+  workout += "- " + safePick(finisher) + "\n";
 
   document.getElementById("output").textContent = workout;
+
+  /* SAVE HISTORY */
+  history = history.concat(used);
+
+  if (history.length > 60) {
+    history = history.slice(history.length - 60);
+  }
+
+  localStorage.setItem("history", JSON.stringify(history));
 }
 
 </script>
