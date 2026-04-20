@@ -169,36 +169,43 @@ function generate() {
   let used = [];
 
   function safePick(arr) {
-    const item = pick(arr);
-    used.push(item);
-    return item;
+    let choice;
+    let tries = 0;
+
+    do {
+      choice = arr[Math.floor(Math.random() * arr.length)];
+      tries++;
+    } while (history.includes(choice) && tries < 10);
+
+    used.push(choice);
+    return choice;
   }
 
-  /* BLOCK 1 */
-  workout += "BLOCK 1 - PRIMER\n";
-  workout += "HR: " + safePick(hrElevator) + "\n";
-  workout += "Plyo: " + safePick(plyo) + "\n";
-  workout += "Mobility: " + safePick(mobility) + "\n\n";
+  // FORCE ALL 3 LINES (no collapsing possible)
+  const hr = safePick(hrElevator);
+  const ply = safePick(plyo);
+  const mob = safePick(mobility);
 
-  /* BLOCK 2 */
+  workout += "BLOCK 1 - PRIMER\n";
+  workout += "HR: " + hr + "\n";
+  workout += "Plyo: " + ply + "\n";
+  workout += "Mobility: " + mob + "\n\n";
+
   workout += "BLOCK 2 - UPPER SUPERSERIES\n";
   workout += "A1: " + safePick(upperPush) + "\n";
   workout += "A2: " + safePick(upperPull) + "\n";
   workout += "A3: " + safePick(core) + "\n\n";
 
-  /* BLOCK 3 */
   workout += "BLOCK 3 - LOWER SUPERSERIES\n";
   workout += "B1: " + safePick(lowerKnee) + "\n";
   workout += "B2: " + safePick(lowerHip) + "\n";
   workout += "B3: " + safePick(core) + "\n\n";
 
-  /* FINISHER */
   workout += "FINISHER\n";
   workout += "- " + safePick(finisher) + "\n";
 
   document.getElementById("output").textContent = workout;
 
-  /* SAVE HISTORY */
   history = history.concat(used);
 
   if (history.length > 60) {
