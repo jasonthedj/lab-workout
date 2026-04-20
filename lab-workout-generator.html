@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The Lab Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      max-width: 900px;
+      margin: 40px auto;
+    }
+
+    h1 {
+      color: #E10600;
+    }
+
+    button {
+      background: #E10600;
+      color: #fff;
+      border: none;
+      padding: 12px 16px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    pre {
+      background: #111;
+      padding: 20px;
+      border: 1px solid #333;
+      white-space: pre-wrap;
+    }
+
+  </style>
+</head>
+<body>
+
+<h1>The Lab Workout Generator</h1>
+<button onclick="generate()">Generate Workout</button>
+
+<pre id="output"></pre>
+
+<script>
+
+// ===== EXERCISE LIBRARY (LAB SYSTEM) =====
+
+// Upper Push
+const upperPush = [
+  "DB Bench Press",
+  "Incline DB Press",
+  "Barbell Bench Press",
+  "Landmine Press",
+  "Half-Kneeling DB Press",
+  "Push-Ups",
+  "Band-Resisted Push-Ups"
+];
+
+// Upper Pull
+const upperPull = [
+  "Pull-Ups",
+  "Chin-Ups",
+  "Lat Pulldown",
+  "Chest-Supported DB Row",
+  "Single Arm DB Row",
+  "TRX Row",
+  "Seated Cable Row"
+];
+
+// Knee Dominant
+const lowerKnee = [
+  "Back Squat",
+  "Front Squat",
+  "Goblet Squat",
+  "Rear Foot Elevated Split Squat",
+  "Step-Ups",
+  "Reverse Lunge",
+  "Trap Bar Squat"
+];
+
+// Hip Dominant
+const lowerHip = [
+  "RDL",
+  "Barbell Deadlift",
+  "Trap Bar Deadlift",
+  "Hip Thrust",
+  "Kettlebell Deadlift",
+  "Nordic Hamstring Curl",
+  "kBox Deadlift"
+];
+
+// Core
+const core = [
+  "Dead Bug",
+  "Plank",
+  "Side Plank",
+  "Hanging Knee Raise",
+  "Pallof Press",
+  "Cable Chop",
+  "Ab Wheel"
+];
+
+// Conditioning
+const finisher = [
+  "Sled Push",
+  "Sled Drag",
+  "Airdyne Sprint",
+  "Row Intervals",
+  "SkiErg Sprint",
+  "Tempo Runs"
+];
+
+// Primer
+const primer = [
+  "Jump Rope 30s",
+  "Med Ball Slams",
+  "A-Skips",
+  "Pogo Jumps"
+];
+
+// ===== RANDOM PICK FUNCTION =====
+function pick(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+// ===== GENERATE WORKOUT =====
+function generate() {
+
+  let workout = "";
+
+  workout += "BLOCK 1\n";
+  workout += "- " + pick(primer) + "\n\n";
+
+  workout += "BLOCK 2\n";
+  workout += "- " + pick(upperPush) + " (3 x 8)\n";
+  workout += "- " + pick(upperPull) + " (3 x 10)\n";
+  workout += "- " + pick(core) + " (3 x 12)\n\n";
+
+  workout += "BLOCK 3\n";
+  workout += "- " + pick(lowerKnee) + " (3 x 8)\n";
+  workout += "- " + pick(lowerHip) + " (3 x 10)\n";
+  workout += "- " + pick(core) + " (3 x 12)\n\n";
+
+  workout += "FINISHER\n";
+  workout += "- " + pick(finisher) + " (5 min)\n";
+
+  document.getElementById("output").textContent = workout;
+}
+
+</script>
+
+</body>
+</html>
